@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/AndLibraryPowerHTTP.iml" filepath="$PROJECT_DIR$/AndLibraryPowerHTTP.iml" />
+      <module fileurl="file://$PROJECT_DIR$/andlibrarypowerhttp/andlibrarypowerhttp.iml" filepath="$PROJECT_DIR$/andlibrarypowerhttp/andlibrarypowerhttp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/usagesexample/usagesexample.iml" filepath="$PROJECT_DIR$/usagesexample/usagesexample.iml" />
+    </modules>
+  </component>
+</project>

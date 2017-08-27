@@ -17,7 +17,7 @@ public class PowerHTTPConnection {
     private String strDomainURL;
     private final String userAgent = "Mozilla/5.0";
     private HTTPMethod httpMethod;
-    private boolean isAllowRedirects;
+    private boolean isAllowRedirects = true;
     private int readTimeout = 0;
     private int connectTimeout = 0;
     private boolean isUseCaches = false;
@@ -59,7 +59,7 @@ public class PowerHTTPConnection {
         return this;
     }
 
-    public void onOpenConnection() {
+    public String onRunConnection() {
         try {
             URL domainURL = new URL(strDomainURL);
             //Get url protocol: domainURL.getProtocol()
@@ -79,29 +79,36 @@ public class PowerHTTPConnection {
             if (urlHeaders.size() > 0) {
                 //JSONObject jsonObject = new JSONObject(urlHeaderList);
                 //LogWriter.Log("PRINT_HEADER_LIST:- " + jsonObject.toString());
+                String strHeaders = "";
                 for (Map.Entry<String, String> entry : urlHeaders.entrySet()) {
                     String key = entry.getKey();
                     String value = entry.getValue();
+                    strHeaders += key + "=" + value + "&";
                     httpURLConnection.setRequestProperty(key, value);
                 }
+                LogWriter.Log("HTTP_HEADER: " + strHeaders);
             }
             httpURLConnection.setDoInput(true);
             httpURLConnection.setDoOutput(true);
             if (httpMethod.POST == httpMethod && urlRequestParameters.size() > 0) {
                 //onWriteHttpUrlData(httpURLConnection);
-                PowerURLReadWrite.onURLWriter(httpURLConnection, PowerURLParameters.getFormatedURLParameters(urlRequestParameters));
+                String urlRequestParam = PowerURLParameters.getFormatedURLParameters(urlRequestParameters);
+                PowerURLReadWrite.onURLWriter(httpURLConnection, urlRequestParam);
+                LogWriter.Log("HTTP_PARAMETERS:" + urlRequestParam);
             }
             int responseCode = httpURLConnection.getResponseCode();
             LogWriter.Log("HTTP_RESPONSE_CODE: " + responseCode);
             String httpURLData = PowerURLReadWrite.onURLReader(httpURLConnection);
             httpURLConnection.disconnect();
             if (httpURLData != null) {
-                LogWriter.Log("URL_DATA: " + httpURLData);
+                //LogWriter.Log("URL_DATA: " + httpURLData);
             }
+            return httpURLData;
         } catch (MalformedURLException e) {
             LogWriter.Log("PRINT_ERROR_MalformedURLException: " + e.toString());
         } catch (IOException e) {
             LogWriter.Log("PRINT_ERROR_IOException: " + e.toString());
         }
+        return null;
     }
 }
