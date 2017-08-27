@@ -1,13 +1,13 @@
 # And-Library-Power-HTTP
 And Library Power HTTP
 
-### Minimal Usages
+### Minimal Usages:
 ```Minimal Usages
 PowerFeedHTTPAsyncTask powerFeedHTTPAsyncTask = new PowerFeedHTTPAsyncTask();
 powerFeedHTTPAsyncTask.onExecute(context, "http://jagoron24.com/");
 ```
 
-### Extended Usages
+### Extended Usages:
 ```Extended Usages
 PowerFeedHTTPAsyncTask powerFeedHTTPAsyncTask = new PowerFeedHTTPAsyncTask(new OnFeedHTTPEventListenerHandler() {
     @Override
