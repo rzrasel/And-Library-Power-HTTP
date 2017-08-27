@@ -43,5 +43,5 @@ HashMap<String, String> urlHeaders = new HashMap<String, String>();
                 .setHTTPMethod(HTTPMethod.POST)
                 .setUrlHeader(urlHeaders)
                 .setURLParameters(urlRequestParameters)
-                .onExecute(this, "http://jagoron24.com/");
+                .onExecute(context, "http://jagoron24.com/");
 ```
