@@ -63,14 +63,14 @@ public class ActSplash extends AppCompatActivity {
                 .setHTTPMethod(HTTPMethod.POST)
                 .setUrlHeader(urlHeaders)
                 .setURLParameters(urlRequestParameters)
-                .onExecute(this, "http://www.prothom-alo.com/");
+                .onExecute(this, "http://jagoron24.com/");
     }
 
     public class FeedAsyncTask extends AsyncTask<Void, Void, Void> {
         @Override
         protected Void doInBackground(Void... argParams) {
             powerHTTPConnection
-                    .onPrepareConnection("http://www.prothom-alo.com/", HTTPMethod.GET, false)
+                    .onPrepareConnection("http://jagoron24.com/", HTTPMethod.GET, false)
                     .onRunConnection();
             return null;
         }
